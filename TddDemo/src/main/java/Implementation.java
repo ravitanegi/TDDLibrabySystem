@@ -59,17 +59,20 @@ public class Implementation implements Addition, Subtraction, Library{
 	public String del(String ls )
 	{
 		String[] book = new String[] {"C" , "Java" , "Ruby"};
-		String result = "";
-		for(int i=0;i<book.length;i++)
+		String[] newBook = new String[book.length - 1];
+		String delBook="null";
+		int count = 0;
+		for(int i=0; i<book.length;i++)
 		{
-		 if(ls == book[i])
-		 {
-			 result = book[i];
-		 }
-		 
+			if(book[i]==ls)
+			{
+				delBook= book[i];
+				newBook[i] = book[i+1];
+			}
+		
+			
 		}
-		return result;
-	
+	    return delBook;
 	}
 	
 

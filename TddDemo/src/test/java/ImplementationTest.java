@@ -73,4 +73,16 @@ public class ImplementationTest {
 				
 	    
 	}
+	
+	@Test
+	public void testDel()
+	{
+		String check = "C";
+		assertEquals("C",obj.del(check));
+		
+		
+	     check = "Java";
+		assertEquals("Java",obj.del(check));	
+	    
+	}
 }
