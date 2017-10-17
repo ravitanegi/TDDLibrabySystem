@@ -1,5 +1,8 @@
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,16 +47,19 @@ public class ImplementationTest {
 	}
 	
 	@Test
-	public void testSearch()
+	public void testSearch() throws ClassNotFoundException, SQLException
 	{
-		String check = "Java";
-		assertEquals("Java",obj.search(check));
+		int BookId = 1;
+		assertEquals("C",obj.search(BookId));
 		
-		check = "C";
-		assertEquals("C",obj.search(check));
+		//String check = "Java";
+		//assertEquals("Java",obj.search(check));
 		
-		check = "Ruby";
-		assertEquals("Ruby",obj.search(check));
+		//check = "C";
+		//assertEquals("C",obj.search(check));
+		
+		//check = "Ruby";
+		//assertEquals("Ruby",obj.search(check));
 				
 		
 		
@@ -63,26 +69,38 @@ public class ImplementationTest {
 	@Test
 	public void testAddBook()
 	{
-		String check = "Python";
-		assertEquals("Python",obj.addBook(check));
+		String BookTitle= "Python";
 		
+		ArrayList<String> expected = new ArrayList<String>();
 		
-		check = "Dotnet";
-		assertEquals("Dotnet",obj.addBook(check));
-		
-				
-	    
+		expected.add("C");
+		expected.add("Java");
+		expected.add("Ruby");
+		expected.add("Python");
+		assertEquals(expected,obj.addBook(BookTitle));
+
+		expected.add("Javascript");
+		expected.add("C++");
+		expected.add("PHP");
+		assertEquals(expected,obj.addBook("Python","Javascript","C++","PHP"));
 	}
 	
 	@Test
 	public void testDel()
 	{
+		String[] book = new String[] {"C" , "Java" , "Ruby"};
 		String check = "C";
-		assertEquals("C",obj.del(check));
+		String[] newBookList= new String[] {"Java", "Ruby"};
+		assertEquals(newBookList,obj.del(check));
+		
+		check = "Java";
+		
+		newBookList= new String[] {"C", "Ruby"};
+		assertEquals(newBookList,obj.del(check));
 		
 		
-	     check = "Java";
-		assertEquals("Java",obj.del(check));	
+	    // check = "Java";
+		//assertEquals("book",obj.del(check));	
 	    
 	}
 }
